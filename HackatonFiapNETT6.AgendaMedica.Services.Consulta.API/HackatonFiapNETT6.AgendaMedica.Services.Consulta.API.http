@@ -1,0 +1,6 @@
+@HackatonFiapNETT6.AgendaMedica.Services.Consulta.API_HostAddress = http://localhost:5198
+
+GET {{HackatonFiapNETT6.AgendaMedica.Services.Consulta.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

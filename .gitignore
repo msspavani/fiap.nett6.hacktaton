@@ -1,0 +1,17 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+*.DS_Store
+*.log
+
+# Rider
+.idea/
+
+# Docker
+**/docker-compose.override.yml
+.env
+

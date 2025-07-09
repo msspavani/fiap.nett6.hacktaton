@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consulta-api
+  name: gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: consulta-api
+      app: gateway
   template:
     metadata:
       labels:
-        app: consulta-api
+        app: gateway
     spec:
       containers:
-        - name: consulta-api
-          image: docker.io/mpavani/hackatonfiapnett6-consulta-api:latest
+        - name: gateway
+          image: docker.io/mpavani/hackatonfiapnett6-gateway:latest
           ports:
             - containerPort: 80

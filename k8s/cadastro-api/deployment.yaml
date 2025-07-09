@@ -16,4 +16,4 @@ spec:
         - name: cadastro-api
           image: docker.io/mpavani/hackatonfiapnett6-cadastro-api:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80

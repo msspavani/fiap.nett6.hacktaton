@@ -16,4 +16,4 @@ spec:
         - name: agenda-api
           image: docker.io/mpavani/hackatonfiapnett6-agenda-api:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80

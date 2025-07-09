@@ -11,7 +11,15 @@ jobs:
 
     strategy:
       matrix:
-        service: [agenda-api, auth-api, consulta-api, cadastro-api]
+        include:
+          - name: agenda-api
+            path: HackatonFiapNETT6.AgendaMedica.Services.Agenda.API
+          - name: auth-api
+            path: HackatonFiapNETT6.AgendaMedica.Services.Auth.API
+          - name: cadastro-api
+            path: HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API
+          - name: consulta-api
+            path: HackatonFiapNETT6.AgendaMedica.Services.Consulta.API
 
     steps:
       - name: Checkout source
@@ -22,5 +30,5 @@ jobs:
 
       - name: Build and push image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ matrix.service }}:latest -f HackatonFiapNETT6.AgendaMedica.Services.${{ matrix.service | replace('-','.') }}/Dockerfile .
-          docker push ${{ secrets.DOCKER_USERNAME }}/${{ matrix.service }}:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ matrix.name }}:latest -f ${{ matrix.path }}/Dockerfile .
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ matrix.name }}:latest

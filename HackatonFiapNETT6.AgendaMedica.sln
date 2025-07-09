@@ -55,11 +55,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackatonFiapNETT6.AgendaMed
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackatonFiapNETT6.AgendaMedica.Shared", "HackatonFiapNETT6.AgendaMedica.Shared\HackatonFiapNETT6.AgendaMedica.Shared.csproj", "{B01C714E-2063-4797-B6A4-70338C50FE7E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{7DB49D6D-68C2-41C8-94B4-360C7EF5C36E}"
-	ProjectSection(SolutionItems) = preProject
-		.github = .github
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{6217D90D-E5C0-4760-85DD-7EB70CA296D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-api", "auth-api", "{B736F69E-DA91-4B72-823A-7ED80BCF926F}"

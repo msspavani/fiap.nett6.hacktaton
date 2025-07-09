@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consulta-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consulta-api
+  template:
+    metadata:
+      labels:
+        app: consulta-api
+    spec:
+      containers:
+        - name: consulta-api
+          image: docker.io/mpavani/hackatonfiapnett6-consulta-api:latest
+          ports:
+            - containerPort: 8080

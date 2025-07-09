@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cadastro-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cadastro-api
+  template:
+    metadata:
+      labels:
+        app: cadastro-api
+    spec:
+      containers:
+        - name: cadastro-api
+          image: docker.io/mpavani/hackatonfiapnett6-cadastro-api:latest
+          ports:
+            - containerPort: 8080

@@ -2,7 +2,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY HackatonFiapNETT6.AgendaMedica.sln ./
 
 # Referenciados no .sln
 COPY HackatonFiapNETT6.AgendaMedica.Services.Auth.API/*.csproj ./HackatonFiapNETT6.AgendaMedica.Services.Auth.API/

@@ -1,0 +1,25 @@
+name: Deploy to Minikube
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Seu agente local do GitHub Actions
+
+    strategy:
+      matrix:
+        api:
+          - agenda-api
+          - auth-api
+          - cadastro-api
+          - consulta-api
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy ${{ matrix.api }} to Minikube
+        run: |
+          kubectl apply -f k8s/${{ matrix.api }}/deployment.yaml
+          kubectl apply -f k8s/${{ matrix.api }}/service.yaml

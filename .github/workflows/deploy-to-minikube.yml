@@ -24,10 +24,24 @@ jobs:
     - name: Set Docker paths
       id: set-paths
       run: |
-        SERVICE_NAME=${{ matrix.service }}
-        SERVICE_CAPITALIZED="$(tr '[:lower:]' '[:upper:]' <<< ${SERVICE_NAME:0:1})${SERVICE_NAME:1}"
-        DOCKERFILE="src/Services/${SERVICE_CAPITALIZED}/API/Dockerfile"
-        CONTEXT="src/Services/${SERVICE_CAPITALIZED}/API"
+        case ${{ matrix.service }} in
+          agenda)
+            DOCKERFILE="HackatonFiapNETT6.AgendaMedica.Services.Agenda.API/Dockerfile"
+            CONTEXT="HackatonFiapNETT6.AgendaMedica.Services.Agenda.API"
+            ;;
+          auth)
+            DOCKERFILE="HackatonFiapNETT6.AgendaMedica.Services.Auth.API/Dockerfile"
+            CONTEXT="HackatonFiapNETT6.AgendaMedica.Services.Auth.API"
+            ;;
+          cadastro)
+            DOCKERFILE="HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API/Dockerfile"
+            CONTEXT="HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API"
+            ;;
+          consulta)
+            DOCKERFILE="HackatonFiapNETT6.AgendaMedica.Services.Consulta.API/Dockerfile"
+            CONTEXT="HackatonFiapNETT6.AgendaMedica.Services.Consulta.API"
+            ;;
+        esac
         echo "DOCKERFILE=$DOCKERFILE" >> $GITHUB_ENV
         echo "CONTEXT=$CONTEXT" >> $GITHUB_ENV
 

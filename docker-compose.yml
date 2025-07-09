@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  agenda-api:
+    container_name: agenda-api
+    build:
+      context: .
+      dockerfile: HackatonFiapNETT6.AgendaMedica.Services.Agenda.API/Dockerfile
+    ports:
+      - "5001:80"
+    networks:
+      - hackaton-network
+
+  auth-api:
+    container_name: auth-api
+    build:
+      context: .
+      dockerfile: HackatonFiapNETT6.AgendaMedica.Services.Auth.API/Dockerfile
+    ports:
+      - "5002:80"
+    networks:
+      - hackaton-network
+
+  cadastro-api:
+    container_name: cadastro-api
+    build:
+      context: .
+      dockerfile: HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API/Dockerfile
+    ports:
+      - "5003:80"
+    networks:
+      - hackaton-network
+
+  consulta-api:
+    container_name: consulta-api
+    build:
+      context: .
+      dockerfile: HackatonFiapNETT6.AgendaMedica.Services.Consulta.API/Dockerfile
+    ports:
+      - "5004:80"
+    networks:
+      - hackaton-network
+
+networks:
+  hackaton-network:
+    driver: bridge

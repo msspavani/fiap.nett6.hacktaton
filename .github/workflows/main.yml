@@ -20,8 +20,6 @@ jobs:
             path: HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API
           - name: consulta-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Consulta.API
-          - name: gateway
-            path: HackatonFiapNETT6.AgendaMedica.Gateway
 
     steps:
       - name: Checkout source
@@ -32,10 +30,16 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest -f ${{ matrix.path }}/Dockerfile ${{ matrix.path }}
+          docker build -t docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest \
+            -f ${{ matrix.path }}/Dockerfile ${{ matrix.path }}
           docker push docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest
 
-      - name: Deploy to Kubernetes
+      - name: Configurar acesso ao cluster local
         run: |
-          kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml --validate=false
+          mkdir -p ~/.kube
+          cp /home/martines/.kube/config ~/.kube/config
+
+      - name: Apply Kubernetes manifests
+        run: |
+          kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml
           kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-service.yaml

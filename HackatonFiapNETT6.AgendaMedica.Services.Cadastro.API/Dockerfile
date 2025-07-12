@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API.csproj ./
+COPY ./HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API.csproj ./
 RUN dotnet restore
 
 COPY . ./

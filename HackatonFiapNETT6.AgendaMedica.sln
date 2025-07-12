@@ -59,34 +59,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{6217D90D-E5C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-api", "auth-api", "{B736F69E-DA91-4B72-823A-7ED80BCF926F}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\auth-api\deployment.yaml = k8s\auth-api\deployment.yaml
-		k8s\auth-api\service.yaml = k8s\auth-api\service.yaml
+		k8s\auth-api\auth-api-deployment.yaml = k8s\auth-api\auth-api-deployment.yaml
+		k8s\auth-api\auth-api-service.yaml = k8s\auth-api\auth-api-service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{DC3541DC-AF3B-4ACD-B5E0-3828ACA7EBE1}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\gateway\service.yaml = k8s\gateway\service.yaml
-		k8s\gateway\deployment.yaml = k8s\gateway\deployment.yaml
+		k8s\gateway\gateway-api-deployment.yaml = k8s\gateway\gateway-api-deployment.yaml
+		k8s\gateway\gateway-api-service.yaml = k8s\gateway\gateway-api-service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rabbitmq", "rabbitmq", "{3A860383-4177-4328-947B-F6779ABF2BD4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "agenda-api", "agenda-api", "{D1DE0B72-3EC7-40F0-92D8-A7C769FFD240}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\agenda-api\deployment.yaml = k8s\agenda-api\deployment.yaml
-		k8s\agenda-api\service.yaml = k8s\agenda-api\service.yaml
+		k8s\agenda-api\agenda-api-deployment.yaml = k8s\agenda-api\agenda-api-deployment.yaml
+		k8s\agenda-api\agenda-api-service.yaml = k8s\agenda-api\agenda-api-service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cadastro-api", "cadastro-api", "{2E9F493A-91DA-44BF-8167-E58C41ACCF31}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\cadastro-api\deployment.yaml = k8s\cadastro-api\deployment.yaml
-		k8s\cadastro-api\service.yaml = k8s\cadastro-api\service.yaml
+		k8s\cadastro-api\cadastro-api-deployment.yaml = k8s\cadastro-api\cadastro-api-deployment.yaml
+		k8s\cadastro-api\cadastro-api-service.yaml = k8s\cadastro-api\cadastro-api-service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consulta-api", "consulta-api", "{E46D54D7-0F0D-4B68-B3AC-B3732AA52C0B}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\consulta-api\deployment.yaml = k8s\consulta-api\deployment.yaml
-		k8s\consulta-api\service.yaml = k8s\consulta-api\service.yaml
+		k8s\consulta-api\consulta-api-deployment.yaml = k8s\consulta-api\consulta-api-deployment.yaml
+		k8s\consulta-api\consulta-api-service.yaml = k8s\consulta-api\consulta-api-service.yaml
 	EndProjectSection
 EndProject
 Global

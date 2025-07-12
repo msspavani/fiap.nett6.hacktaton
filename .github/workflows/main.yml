@@ -34,14 +34,9 @@ jobs:
             -f ${{ matrix.path }}/Dockerfile ${{ matrix.path }}
           docker push docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest
 
-      - name: Copiar kubeconfig do sistema para o runner
-        run: |
-          mkdir -p /home/martines/Documentos/FIAP/Repositorios/runner-hackaton/actions-runner/.kube
-          cp /home/martines/.kube/config /home/martines/Documentos/FIAP/Repositorios/runner-hackaton/actions-runner/.kube/config
-
       - name: Apply Kubernetes manifests
         env:
-          KUBECONFIG: /home/martines/Documentos/FIAP/Repositorios/runner-hackaton/actions-runner/.kube/config
+          KUBECONFIG: .kube/config
         run: |
           kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml
           kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-service.yaml

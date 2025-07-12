@@ -37,5 +37,5 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml
+          kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml --validate=false
           kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-service.yaml

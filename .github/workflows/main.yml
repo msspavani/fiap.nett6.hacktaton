@@ -1,13 +1,6 @@
-name: Build, Push and Deploy to Kubernetes
-
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   build-push-deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # <--- IMPORTANTE
 
     strategy:
       matrix:
@@ -34,10 +27,10 @@ jobs:
             -f ${{ matrix.path }}/Dockerfile ${{ matrix.path }}
           docker push docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest
 
-      - name: Criar kubeconfig a partir do Secret
+      - name: Gerar kubeconfig local do Minikube
         run: |
           mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > ~/.kube/config
+          minikube update-context
 
       - name: Diagnóstico do kubeconfig
         run: |

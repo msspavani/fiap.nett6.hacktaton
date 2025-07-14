@@ -47,5 +47,5 @@ jobs:
 
       - name: Apply Kubernetes manifests
         run: |
-          kubectl apply -f k8s/${{ matrix.name }}-deployment.yaml --validate=false
-          kubectl apply -f k8s/${{ matrix.name }}-service.yaml
+          kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml --validate=false
+          kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-service.yaml

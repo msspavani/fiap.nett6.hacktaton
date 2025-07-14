@@ -34,21 +34,18 @@ jobs:
             -f ${{ matrix.path }}/Dockerfile ${{ matrix.path }}
           docker push docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest
 
+      - name: Criar kubeconfig a partir do Secret
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG_B64 }}" | base64 -d > ~/.kube/config
+
       - name: Diagnóstico do kubeconfig
-        env:
-          KUBECONFIG: .kube/config
         run: |
           echo ">> Verificando acesso ao cluster Kubernetes"
-          echo "Arquivo em uso: $KUBECONFIG"
-          pwd
-          cat $KUBECONFIG
-          kubectl config get-contexts
           kubectl config current-context
           kubectl cluster-info
 
       - name: Apply Kubernetes manifests
-        env:
-          KUBECONFIG: .kube/config
         run: |
-          kubectl apply --validate=false -f k8s/${{ matrix.name }}-deployment.yaml
-          kubectl apply --validate=false -f k8s/${{ matrix.name }}-service.yaml
+          kubectl apply -f k8s/${{ matrix.name }}-deployment.yaml --validate=false
+          kubectl apply -f k8s/${{ matrix.name }}-service.yaml

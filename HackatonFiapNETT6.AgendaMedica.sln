@@ -89,6 +89,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consulta-api", "consulta-ap
 		k8s\consulta-api\consulta-api-service.yaml = k8s\consulta-api\consulta-api-service.yaml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackatonFiapNETT6.AgendaMedica.Services.Auth.API.Tests", "HackatonFiapNETT6.AgendaMedica.Services.Auth.API.Tests\HackatonFiapNETT6.AgendaMedica.Services.Auth.API.Tests.csproj", "{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,7 @@ Global
 		{D1DE0B72-3EC7-40F0-92D8-A7C769FFD240} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 		{2E9F493A-91DA-44BF-8167-E58C41ACCF31} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 		{E46D54D7-0F0D-4B68-B3AC-B3732AA52C0B} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
+		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2} = {E9C926EC-8A11-4E53-8E89-E108CA7C41FE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E7267BF6-0B09-4005-AC77-8AAE3AD2217E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -172,5 +175,9 @@ Global
 		{B01C714E-2063-4797-B6A4-70338C50FE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B01C714E-2063-4797-B6A4-70338C50FE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B01C714E-2063-4797-B6A4-70338C50FE7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

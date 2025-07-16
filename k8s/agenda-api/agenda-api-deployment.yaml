@@ -20,6 +20,12 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+          env:
+            - name: ConnectionStrings__Default
+              valueFrom:
+                secretKeyRef:
+                  name: agenda-api-secret
+                  key: defaultConnection
           resources:
             requests:
               cpu: "100m"

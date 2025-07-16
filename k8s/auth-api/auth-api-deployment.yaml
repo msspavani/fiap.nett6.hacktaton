@@ -16,10 +16,16 @@ spec:
     spec:
       containers:
         - name: auth-api
-          image: docker.io/mpavani/hackatonfiapnett6-auth-api:latest
+          image: docker.io/mpavani/hackatonfiapnett6-auth-api:${IMAGE_TAG}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+          env:
+            - name: ConnectionStrings__Default
+              valueFrom:
+                secretKeyRef:
+                  name: auth-api-secret
+                  key: defaultConnection
           resources:
             requests:
               cpu: "100m"

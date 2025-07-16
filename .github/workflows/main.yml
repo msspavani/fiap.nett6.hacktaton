@@ -7,19 +7,23 @@ on:
 
 jobs:
   build-push-deploy:
-    runs-on: self-hosted  # <--- IMPORTANTE
+    runs-on: self-hosted
 
     strategy:
       matrix:
         include:
           - name: agenda-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Agenda.API
+            secret: agenda-api-secret
           - name: auth-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Auth.API
+            secret: auth-api-secret
           - name: cadastro-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API
+            secret: cadastro-api-secret
           - name: consulta-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Consulta.API
+            secret: consulta-api-secret
 
     steps:
       - name: Checkout source
@@ -44,6 +48,12 @@ jobs:
           echo ">> Verificando acesso ao cluster Kubernetes"
           kubectl config current-context
           kubectl cluster-info
+
+      - name: Criar secret da connection string
+        run: |
+          kubectl delete secret ${{ matrix.secret }} --ignore-not-found=true
+          kubectl create secret generic ${{ matrix.secret }} \
+            --from-literal=defaultConnection="Server=sqlserver;Database=PLACEHOLDER_DB;User Id=sa;Password=PLACEHOLDER_PASS;TrustServerCertificate=true"
 
       - name: Apply Kubernetes manifests
         run: |

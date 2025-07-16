@@ -38,11 +38,19 @@ public class UsuarioTests
     [Fact]
     public void Deve_Validar_Senha_Armazenada()
     {
-        var salt = Convert.FromHexString("bc9ac9a2-3c20-19d4-0b9b-796e7da93462"); 
-        var hashBase64 = "1slsHZYzIQOrCO5koUd5reYXuJjxJ/X5hi+aRNGMJhQ=";
+        var salt = Convert.FromHexString("4fcd8f7a9c1a0ea2e3e2d7a190b71bc3");
+        var senha = "123Quatro#$";
+        
+        var hashGerado = Convert.ToBase64String(Usuario.GerarHash(senha, salt));
 
-        var usuario = new Usuario(Guid.NewGuid(), "CRM123456", hashBase64, salt, TipoUsuario.Medico);
+        var usuario = new Usuario(
+            id: Guid.NewGuid(),
+            login: "CRM123456",
+            senhaHash: hashGerado,
+            salt: salt,
+            tipo: TipoUsuario.Medico
+        );
 
-        Assert.True(usuario.ValidarSenha("SenhaForte@123"));
+        Assert.True(usuario.ValidarSenha(senha));
     }
 }

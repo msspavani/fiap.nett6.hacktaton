@@ -5,6 +5,7 @@ using HackatonFiapNETT6.AgendaMedica.Services.Auth.Domain.Interfaces;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Repositories;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Security;
 using Microsoft.Data.SqlClient;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,13 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IDbConnection>(sp =>
     new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Repositório Dapper
+
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
-// JWT Generator
+
 builder.Services.AddScoped<JwtTokenGenerator>();
 
-// MediatR
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
@@ -43,6 +43,9 @@ if (app.Environment.IsDevelopment())
 
 app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
+app.UseRouting();
+app.UseHttpMetrics(); 
+app.MapMetrics();   
 app.MapControllers();
 app.Run();
 

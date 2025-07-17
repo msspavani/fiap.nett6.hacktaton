@@ -56,9 +56,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackatonFiapNETT6.AgendaMedica.Shared", "HackatonFiapNETT6.AgendaMedica.Shared\HackatonFiapNETT6.AgendaMedica.Shared.csproj", "{B01C714E-2063-4797-B6A4-70338C50FE7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{6217D90D-E5C0-4760-85DD-7EB70CA296D1}"
-	ProjectSection(SolutionItems) = preProject
-		k8s\auth-api-monitoring\auth-api-monitoring-service.yaml = k8s\auth-api-monitoring\auth-api-monitoring-service.yaml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-api", "auth-api", "{B736F69E-DA91-4B72-823A-7ED80BCF926F}"
 	ProjectSection(SolutionItems) = preProject
@@ -102,6 +99,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prometheus", "prometheus", "{10B04201-0315-480B-A4CE-250D0BD8BB23}"
 	ProjectSection(SolutionItems) = preProject
 		prometheus.yml = prometheus.yml
+		prometheus-configmap.yml = prometheus-configmap.yml
+		prometheus-deployment.yml = prometheus-deployment.yml
+		prometheus-service.yaml = prometheus-service.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-api-monitoring", "auth-api-monitoring", "{930E37AB-51E2-452B-9E8C-A5481E3FF758}"

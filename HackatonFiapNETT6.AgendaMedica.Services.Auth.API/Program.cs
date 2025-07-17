@@ -43,9 +43,12 @@ if (app.Environment.IsDevelopment())
 
 app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
+
 app.UseRouting();
 app.UseHttpMetrics(); 
 app.MapMetrics();   
 app.MapControllers();
+
 app.Run("http://0.0.0.0:80");
+
 

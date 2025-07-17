@@ -32,9 +32,7 @@ jobs:
             secret: consulta-api-secret
             docker: true
 
-          - name: auth-api-monitoring
-            path: HackatonFiapNETT6.AgendaMedica.Services.Auth.API  # usa mesmo path para manifestos
-            docker: false
+
 
     steps:
       - name: Checkout source
@@ -73,3 +71,7 @@ jobs:
         run: |
           kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-deployment.yaml --validate=false
           kubectl apply -f k8s/${{ matrix.name }}/${{ matrix.name }}-service.yaml
+        
+      - name: Apply monitoring service
+        run: |
+          kubectl apply -f k8s/auth-api-monitoring/auth-api-monitoring-service.yaml --validate=false

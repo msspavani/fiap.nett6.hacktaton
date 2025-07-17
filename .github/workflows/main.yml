@@ -79,10 +79,10 @@ jobs:
           kubectl apply -f k8s/auth-api-monitoring/auth-api-monitoring-service.yaml --validate=false
 
       - name: Deploy Prometheus ConfigMap
-        run: kubectl apply -f k8s/prometheus/prometheus-configmap.yaml
+        run: kubectl apply -f monitoring/prometheus/prometheus-configmap.yaml
 
       - name: Deploy Prometheus Deployment
-        run: kubectl apply -f k8s/prometheus/prometheus-deployment.yaml
+        run: kubectl apply -f monitoring/prometheus/prometheus-deployment.yaml
 
       - name: Deploy Prometheus Service
-        run: kubectl apply -f k8s/prometheus/prometheus-service.yaml
+        run: kubectl apply -f monitoring/prometheus/prometheus-service.yaml

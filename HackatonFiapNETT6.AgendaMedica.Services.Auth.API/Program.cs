@@ -47,5 +47,5 @@ app.UseRouting();
 app.UseHttpMetrics(); 
 app.MapMetrics();   
 app.MapControllers();
-app.Run();
+app.Run("http://0.0.0.0:80");
 

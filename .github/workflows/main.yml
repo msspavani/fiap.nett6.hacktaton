@@ -15,24 +15,37 @@ jobs:
           - name: agenda-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Agenda.API
             secret: agenda-api-secret
+            docker: true
+
           - name: auth-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Auth.API
             secret: auth-api-secret
+            docker: true
+
           - name: cadastro-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Cadastro.API
             secret: cadastro-api-secret
+            docker: true
+
           - name: consulta-api
             path: HackatonFiapNETT6.AgendaMedica.Services.Consulta.API
             secret: consulta-api-secret
+            docker: true
+
+          - name: auth-api-monitoring
+            path: HackatonFiapNETT6.AgendaMedica.Services.Auth.API  # usa mesmo path para manifestos
+            docker: false
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Log in to Docker Hub
+        if: matrix.docker == true
         run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build and push Docker image
+        if: matrix.docker == true
         run: |
           docker build -t docker.io/${{ secrets.DOCKER_USERNAME }}/hackatonfiapnett6-${{ matrix.name }}:latest \
             -f ${{ matrix.path }}/Dockerfile ${{ matrix.path }}
@@ -50,6 +63,7 @@ jobs:
           kubectl cluster-info
 
       - name: Criar secret da connection string
+        if: matrix.secret != ''
         run: |
           kubectl delete secret ${{ matrix.secret }} --ignore-not-found=true
           kubectl create secret generic ${{ matrix.secret }} \

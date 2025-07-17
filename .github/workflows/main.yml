@@ -32,6 +32,8 @@ jobs:
             secret: consulta-api-secret
             docker: true
 
+      
+
 
 
     steps:
@@ -75,3 +77,12 @@ jobs:
       - name: Apply monitoring service
         run: |
           kubectl apply -f k8s/auth-api-monitoring/auth-api-monitoring-service.yaml --validate=false
+
+      - name: Deploy Prometheus ConfigMap
+        run: kubectl apply -f k8s/prometheus/prometheus-configmap.yaml
+
+      - name: Deploy Prometheus Deployment
+        run: kubectl apply -f k8s/prometheus/prometheus-deployment.yaml
+
+      - name: Deploy Prometheus Service
+        run: kubectl apply -f k8s/prometheus/prometheus-service.yaml

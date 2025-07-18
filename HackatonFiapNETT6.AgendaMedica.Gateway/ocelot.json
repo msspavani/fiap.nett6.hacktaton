@@ -20,13 +20,13 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/auth/{**catchAll}",
+      "DownstreamPathTemplate": "/api/auth/login",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         { "Host": "auth-api", "Port": 80 }
       ],
-      "UpstreamPathTemplate": "/auth/{**catchAll}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+      "UpstreamPathTemplate": "/api/auth/login",
+      "UpstreamHttpMethod": [ "POST"]
     },
     {
       "DownstreamPathTemplate": "/api/cadastro/{**catchAll}",

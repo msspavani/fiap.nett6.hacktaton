@@ -92,3 +92,12 @@ jobs:
           kubectl apply -f monitoring/grafana/grafana-datasource-config.yaml
           kubectl apply -f monitoring/grafana/grafana-deployment.yaml
           kubectl apply -f monitoring/grafana/grafana-service.yaml
+
+      - name: Build Gateway
+        run: |
+          docker build -t mpavani/hackatonfiapnett6-gateway:latest ./Gateway/HackatonFiapNETT6.AgendaMedica.Gateway
+
+      - name: Push Gateway Image
+        run: |
+          docker push mpavani/hackatonfiapnett6-gateway:latest
+

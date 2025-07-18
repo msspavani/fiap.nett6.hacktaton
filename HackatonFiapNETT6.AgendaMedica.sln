@@ -103,8 +103,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "monitoring", "monitoring", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grafana", "grafana", "{0677736D-E647-4659-BB10-F7E9DC8BA1CA}"
 	ProjectSection(SolutionItems) = preProject
-		k8s\grafana\grafana-deployment.yaml = k8s\grafana\grafana-deployment.yaml
-		k8s\grafana\grafana-datasource-config.yaml = k8s\grafana\grafana-datasource-config.yaml
+		monitoring\grafana\grafana-datasource-config.yaml = monitoring\grafana\grafana-datasource-config.yaml
+		monitoring\grafana\grafana-deployment.yaml = monitoring\grafana\grafana-deployment.yaml
+		monitoring\grafana\grafana-service.yaml = monitoring\grafana\grafana-service.yaml
 	EndProjectSection
 EndProject
 Global

@@ -86,3 +86,9 @@ jobs:
 
       - name: Deploy Prometheus Service
         run: kubectl apply -f monitoring/prometheus/prometheus-service.yaml
+        
+      - name: Apply Grafana + Prometheus monitoring
+        run: |
+          kubectl apply -f k8s/monitoring/grafana-datasource-config.yaml
+          kubectl apply -f k8s/monitoring/grafana-deployment.yaml
+          kubectl apply -f k8s/monitoring/grafana-service.yaml

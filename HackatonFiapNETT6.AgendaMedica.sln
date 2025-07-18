@@ -101,6 +101,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "monitoring", "monitoring", 
 		monitoring\prometheus\prometheus-configmap.yaml = monitoring\prometheus\prometheus-configmap.yaml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grafana", "grafana", "{0677736D-E647-4659-BB10-F7E9DC8BA1CA}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\grafana\grafana-deployment.yaml = k8s\grafana\grafana-deployment.yaml
+		k8s\grafana\grafana-datasource-config.yaml = k8s\grafana\grafana-datasource-config.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +146,7 @@ Global
 		{E46D54D7-0F0D-4B68-B3AC-B3732AA52C0B} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2} = {E9C926EC-8A11-4E53-8E89-E108CA7C41FE}
 		{930E37AB-51E2-452B-9E8C-A5481E3FF758} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
+		{0677736D-E647-4659-BB10-F7E9DC8BA1CA} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E7267BF6-0B09-4005-AC77-8AAE3AD2217E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

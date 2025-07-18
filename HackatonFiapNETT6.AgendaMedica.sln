@@ -91,20 +91,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "consulta-api", "consulta-ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackatonFiapNETT6.AgendaMedica.Services.Auth.API.Tests", "HackatonFiapNETT6.AgendaMedica.Services.Auth.API.Tests\HackatonFiapNETT6.AgendaMedica.Services.Auth.API.Tests.csproj", "{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "monitoring", "monitoring", "{08FB5467-F88E-4A15-A95D-7C058070BCB7}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.monitoring.yaml = docker-compose.monitoring.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prometheus", "prometheus", "{10B04201-0315-480B-A4CE-250D0BD8BB23}"
-	ProjectSection(SolutionItems) = preProject
-		prometheus.yml = prometheus.yml
-		prometheus-configmap.yaml = prometheus-configmap.yaml
-		prometheus-deployment.yaml = prometheus-deployment.yaml
-		prometheus-service.yaml = prometheus-service.yaml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-api-monitoring", "auth-api-monitoring", "{930E37AB-51E2-452B-9E8C-A5481E3FF758}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "monitoring", "monitoring", "{22FDCFE7-18F0-40AB-9B69-7120C2477D78}"
+	ProjectSection(SolutionItems) = preProject
+		monitoring\prometheus\prometheus-deployment.yaml = monitoring\prometheus\prometheus-deployment.yaml
+		monitoring\prometheus\prometheus-service.yaml = monitoring\prometheus\prometheus-service.yaml
+		monitoring\prometheus\prometheus.yml = monitoring\prometheus\prometheus.yml
+		monitoring\prometheus\prometheus-configmap.yaml = monitoring\prometheus\prometheus-configmap.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,7 +139,6 @@ Global
 		{2E9F493A-91DA-44BF-8167-E58C41ACCF31} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 		{E46D54D7-0F0D-4B68-B3AC-B3732AA52C0B} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 		{A26C067C-CD1A-49BE-BC97-5F14DDCED6A2} = {E9C926EC-8A11-4E53-8E89-E108CA7C41FE}
-		{10B04201-0315-480B-A4CE-250D0BD8BB23} = {08FB5467-F88E-4A15-A95D-7C058070BCB7}
 		{930E37AB-51E2-452B-9E8C-A5481E3FF758} = {6217D90D-E5C0-4760-85DD-7EB70CA296D1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution

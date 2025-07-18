@@ -93,14 +93,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackatonFiapNETT6.AgendaMed
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "monitoring", "monitoring", "{08FB5467-F88E-4A15-A95D-7C058070BCB7}"
 	ProjectSection(SolutionItems) = preProject
-		docker-compose.monitoring.yml = docker-compose.monitoring.yml
+		docker-compose.monitoring.yaml = docker-compose.monitoring.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prometheus", "prometheus", "{10B04201-0315-480B-A4CE-250D0BD8BB23}"
 	ProjectSection(SolutionItems) = preProject
 		prometheus.yml = prometheus.yml
-		prometheus-configmap.yml = prometheus-configmap.yml
-		prometheus-deployment.yml = prometheus-deployment.yml
+		prometheus-configmap.yaml = prometheus-configmap.yaml
+		prometheus-deployment.yaml = prometheus-deployment.yaml
 		prometheus-service.yaml = prometheus-service.yaml
 	EndProjectSection
 EndProject

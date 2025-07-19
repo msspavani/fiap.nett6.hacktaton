@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: auth-api
-          image: docker.io/mpavani/hackatonfiapnett6-auth-api:${IMAGE_TAG}
-          imagePullPolicy: IfNotPresent
+          image: docker.io/mpavani/hackatonfiapnett6-auth-api:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           env:

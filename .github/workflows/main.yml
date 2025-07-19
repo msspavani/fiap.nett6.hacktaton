@@ -105,5 +105,5 @@ jobs:
 
       - name: Apply Gateway manifests
         run: |
-          kubectl apply -f k8s/gateway/gateway-deployment.yaml --validate=false
-          kubectl apply -f k8s/gateway/gateway-service.yaml
+          kubectl apply -f k8s/gateway/gateway-api-deployment.yaml --validate=false
+          kubectl apply -f k8s/gateway/gateway-api-service.yaml

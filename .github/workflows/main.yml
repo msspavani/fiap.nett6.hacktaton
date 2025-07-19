@@ -95,7 +95,9 @@ jobs:
 
       - name: Build Gateway
         run: |
-          docker build -t mpavani/hackatonfiapnett6-gateway:latest ./Gateway/HackatonFiapNETT6.AgendaMedica.Gateway
+          docker build -t mpavani/hackatonfiapnett6-gateway:latest \
+          -f HackatonFiapNETT6.AgendaMedica.Gateway/Dockerfile \
+          HackatonFiapNETT6.AgendaMedica.Gateway
 
       - name: Push Gateway Image
         run: |

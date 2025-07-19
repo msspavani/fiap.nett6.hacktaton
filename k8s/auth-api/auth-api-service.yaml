@@ -2,10 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: auth-api
-spec:
-  selector:
+  labels:
     app: auth-api
+spec:
   ports:
-    - protocol: TCP
+    - name: http
       port: 80
       targetPort: 80
+    - name: metrics
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: auth-api

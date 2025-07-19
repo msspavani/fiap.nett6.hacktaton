@@ -5,6 +5,7 @@ using HackatonFiapNETT6.AgendaMedica.Services.Auth.Domain.Interfaces;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Repositories;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Security;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Configuration;
+using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Middlewares;
 using Microsoft.Data.SqlClient;
 using Prometheus;
 
@@ -21,16 +22,14 @@ builder.Services.Configure<JwtSettings>(
 
 builder.Services.AddScoped<JwtTokenGenerator>();
 
-builder.Services.AddMediatR(cfg =>
-{
-    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-});
+builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()); });
 
 
-builder.Services.AddControllers() .AddJsonOptions(options =>
+builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-});;
+});
+;
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
@@ -47,10 +46,10 @@ app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
 
 app.UseRouting();
-app.UseHttpMetrics(); 
-app.MapMetrics();   
+app.UseMiddleware<MetricsMiddleware>();
+app.UseHttpMetrics();
+app.MapMetrics();
 app.MapControllers();
 
 app.Run("http://0.0.0.0:80");
 app.Run();
-

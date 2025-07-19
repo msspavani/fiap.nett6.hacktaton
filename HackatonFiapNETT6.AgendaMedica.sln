@@ -61,6 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth-api", "auth-api", "{B7
 	ProjectSection(SolutionItems) = preProject
 		k8s\auth-api\auth-api-deployment.yaml = k8s\auth-api\auth-api-deployment.yaml
 		k8s\auth-api\auth-api-service.yaml = k8s\auth-api\auth-api-service.yaml
+		k8s\auth-api\auth-api-monitor.yaml = k8s\auth-api\auth-api-monitor.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{DC3541DC-AF3B-4ACD-B5E0-3828ACA7EBE1}"

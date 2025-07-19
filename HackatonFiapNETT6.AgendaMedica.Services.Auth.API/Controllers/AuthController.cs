@@ -9,16 +9,28 @@ namespace HackatonFiapNETT6.AgendaMedica.Services.Auth.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly ILogger<AuthController> _logger;
 
-    public AuthController(IMediator mediator)
+    public AuthController(IMediator mediator, ILogger<AuthController> logger)
     {
         _mediator = mediator;
+        _logger = logger;
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] AutenticarUsuarioCommand command)
     {
-        var token = await _mediator.Send(command);
-        return Ok(token);
+        try
+        {
+            var token = await _mediator.Send(command);
+            return Ok(token);
+
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Erro ao logar usuario {usuario}", command.Login);
+            return NoContent();
+        }
+
     }
 }

@@ -102,6 +102,9 @@ jobs:
       - name: Push Gateway Image
         run: |
           docker push mpavani/hackatonfiapnett6-gateway:latest
+          
+      - name: Restart Gateway deployment
+        run: kubectl rollout restart deployment gateway
 
       - name: Deploy Gateway ConfigMap
         run: kubectl apply -f k8s/gateway/gateway-configmap.yaml

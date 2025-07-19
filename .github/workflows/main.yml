@@ -101,3 +101,7 @@ jobs:
         run: |
           docker push mpavani/hackatonfiapnett6-gateway:latest
 
+      - name: Apply Gateway manifests
+        run: |
+          kubectl apply -f k8s/gateway/gateway-deployment.yaml --validate=false
+          kubectl apply -f k8s/gateway/gateway-service.yaml

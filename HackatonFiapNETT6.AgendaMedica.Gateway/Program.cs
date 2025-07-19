@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using HackatonFiapNETT6.AgendaMedica.Gateway.Configuration;
     
     
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,10 @@ builder.Configuration
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+        var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+        
+        
+        Console.WriteLine($"Secret: {jwtSettings.Secret}");
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -25,15 +29,15 @@ builder.Services.AddAuthentication("Bearer")
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
 
-            ValidIssuer = jwtSettings["Issuer"],
-            ValidAudience = jwtSettings["Audience"],
+            ValidIssuer = jwtSettings.Issuer,
+            ValidAudience = jwtSettings.Audience,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtSettings["Secret"]))
+                Encoding.UTF8.GetBytes(jwtSettings.Secret))
         };
     });
 
 builder.Services.AddOcelot(builder.Configuration);
-
+//builder.WebHost.UseUrls("http://*:80");
 
 
 var app = builder.Build();

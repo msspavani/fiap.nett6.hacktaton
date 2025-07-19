@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Domain.Interfaces;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Repositories;
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Security;
+using HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Configuration;
 using Microsoft.Data.SqlClient;
 using Prometheus;
 
@@ -15,7 +16,8 @@ builder.Services.AddTransient<IDbConnection>(sp =>
 
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddScoped<JwtTokenGenerator>();
 
@@ -49,6 +51,6 @@ app.UseHttpMetrics();
 app.MapMetrics();   
 app.MapControllers();
 
-app.Run("http://0.0.0.0:80");
-
+//app.Run("http://0.0.0.0:80");
+app.Run();
 

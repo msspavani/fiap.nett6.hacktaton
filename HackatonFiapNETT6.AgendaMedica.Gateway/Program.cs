@@ -19,9 +19,6 @@ builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
         var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
-        
-        
-        Console.WriteLine($"Secret: {jwtSettings.Secret}");
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
@@ -37,7 +34,10 @@ builder.Services.AddAuthentication("Bearer")
     });
 
 builder.Services.AddOcelot(builder.Configuration);
-builder.WebHost.UseUrls("http://*:80");
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(80);
+});
 
 
 var app = builder.Build();

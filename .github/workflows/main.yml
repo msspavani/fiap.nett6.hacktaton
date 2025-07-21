@@ -97,6 +97,13 @@ jobs:
           kubectl apply -f monitoring/grafana/grafana-datasource-config.yaml
           kubectl apply -f monitoring/grafana/grafana-deployment.yaml
           kubectl apply -f monitoring/grafana/grafana-service.yaml
+          
+      - name: Criar Secret no cluster com chave e IV
+        run: |
+          kubectl --kubeconfig=kubeconfig create secret generic crypto-secrets \
+          --from-literal=CRYPTO_KEY="${{ secrets.CRYPTO_KEY }}" \
+          --from-literal=CRYPTO_IV="${{ secrets.CRYPTO_IV }}" \
+          --dry-run=client -o yaml | kubectl --kubeconfig=kubeconfig apply -f -
 
       - name: Build Gateway
         run: |

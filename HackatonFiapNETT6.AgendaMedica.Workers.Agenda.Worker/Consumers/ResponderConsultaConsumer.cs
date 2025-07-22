@@ -1,18 +1,19 @@
 using System.Text.Json;
 using Azure.Messaging.ServiceBus;
+using HackatonFiapNETT6.AgendaMedica.Messaging.Agenda;
 using HackatonFiapNETT6.AgendaMedica.Messaging.Consultas;
 using HackatonFiapNETT6.AgendaMedica.Workers.Agenda.Worker.Infrastructure.Repositories;
 
 namespace HackatonFiapNETT6.AgendaMedica.Workers.Agenda.Worker.Consumers;
 
-public class AgendarConsultaConsumer : BackgroundService
+public class ResponderConsultaConsumer : BackgroundService
 {
     private readonly ServiceBusProcessor _processor;
     private readonly IServiceProvider _provider;
 
-    public AgendarConsultaConsumer(ServiceBusClient client, IServiceProvider provider)
+    public ResponderConsultaConsumer(ServiceBusClient client, IServiceProvider provider)
     {
-        _processor = client.CreateProcessor("agendar-consulta", new ServiceBusProcessorOptions());
+        _processor = client.CreateProcessor("consulta-responder", new ServiceBusProcessorOptions());
         _provider = provider;
     }
 
@@ -26,13 +27,11 @@ public class AgendarConsultaConsumer : BackgroundService
     }
     private async Task ProcessarMensagem(ProcessMessageEventArgs args)
     {
-        var json = args.Message.Body.ToString();
-        var dto = JsonSerializer.Deserialize<AgendarConsultaMessage>(json);
+        var dto = JsonSerializer.Deserialize<RespostaConsultaMessage>(args.Message.Body);
 
         using var scope = _provider.CreateScope();
         var repo = scope.ServiceProvider.GetRequiredService<IConsultaRepository>();
-
-        await repo.InserirConsultaAsync(dto.MedicoId, dto.PacienteId, dto.DataHora);
+        await repo.AtualizarStatusConsultaAsync(dto.ConsultaId, dto.Aceita);
         await args.CompleteMessageAsync(args.Message);
     }
 

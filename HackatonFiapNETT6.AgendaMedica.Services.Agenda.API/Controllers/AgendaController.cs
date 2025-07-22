@@ -39,4 +39,24 @@ public class AgendaController : ControllerBase
         return Accepted();
     }
     
+    
+    [Authorize(Roles = "Medico")]
+    [HttpPost("consultas/{id}/resposta")]
+    public async Task<IActionResult> ResponderConsulta(Guid id, [FromBody] RespostaConsultaRequest request)
+    {
+        var medicoId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(medicoId, out var mId))
+            return Unauthorized();
+
+        var command = new ResponderConsultaCommand
+        {
+            ConsultaId = id,
+            MedicoId = mId,
+            Aceita = request.Aceita
+        };
+
+        await _mediator.Send(command);
+        return Accepted();
+    }
+    
 }

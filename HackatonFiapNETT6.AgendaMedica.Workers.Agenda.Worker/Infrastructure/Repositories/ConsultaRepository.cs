@@ -1,8 +1,7 @@
 using System.Data;
 using Dapper;
-using Microsoft.Data.SqlClient;
 
-namespace HackatonFiapNETT6.AgendaMedica.Workers.Agenda.Worker.Repositories;
+namespace HackatonFiapNETT6.AgendaMedica.Workers.Agenda.Worker.Infrastructure.Repositories;
 
 public class ConsultaRepository : IConsultaRepository
 {
@@ -27,4 +26,19 @@ public class ConsultaRepository : IConsultaRepository
             DataHora = dataHora
         });
     }
+    
+    public async Task AtualizarStatusConsultaAsync(Guid consultaId, bool aceita)
+    {
+        const string sql = @"
+        UPDATE Consultas
+        SET Status = @Status
+        WHERE Id = @Id";
+
+        await _connection.ExecuteAsync(sql, new
+        {
+            Id = consultaId,
+            Status = aceita ? "CONFIRMADA" : "RECUSADA"
+        });
+    }
+
 }

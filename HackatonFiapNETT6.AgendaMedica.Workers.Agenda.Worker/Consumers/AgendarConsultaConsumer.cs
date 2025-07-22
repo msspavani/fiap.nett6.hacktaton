@@ -9,11 +9,13 @@ public class AgendarConsultaConsumer : BackgroundService
 {
     private readonly ServiceBusProcessor _processor;
     private readonly IServiceProvider _provider;
+    private readonly ILogger<AgendarConsultaConsumer> _logger;
 
-    public AgendarConsultaConsumer(ServiceBusClient client, IServiceProvider provider)
+    public AgendarConsultaConsumer(ServiceBusClient client, IServiceProvider provider, ILogger<AgendarConsultaConsumer> logger)
     {
         _processor = client.CreateProcessor("agendar-consulta", new ServiceBusProcessorOptions());
         _provider = provider;
+        _logger = logger;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -31,7 +33,17 @@ public class AgendarConsultaConsumer : BackgroundService
 
         using var scope = _provider.CreateScope();
         var repo = scope.ServiceProvider.GetRequiredService<IConsultaRepository>();
+        var horarioRepository = scope.ServiceProvider.GetRequiredService<IHorarioRepository>();
 
+        if (!await horarioRepository.EstaDisponivelAsync(dto.MedicoId, dto.DataHora))
+        {
+            _logger.LogInformation("Impossivel registrar horario duplicado para {medico}. horario {Horario}",
+                dto.MedicoId, dto.DataHora);
+            return;
+        }
+        
+        
+        await horarioRepository.ReservarAsync(dto.MedicoId, dto.DataHora);
         await repo.InserirConsultaAsync(dto.MedicoId, dto.PacienteId, dto.DataHora);
         await args.CompleteMessageAsync(args.Message);
     }

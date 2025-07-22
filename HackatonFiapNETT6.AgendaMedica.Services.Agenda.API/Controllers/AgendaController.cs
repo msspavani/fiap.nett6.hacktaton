@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HackatonFiapNETT6.AgendaMedica.Services.Agenda.API.Controllers;
 
+[ApiController]
+[Route("api/agenda")]
 public class AgendaController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -53,6 +55,24 @@ public class AgendaController : ControllerBase
             ConsultaId = id,
             MedicoId = mId,
             Aceita = request.Aceita
+        };
+
+        await _mediator.Send(command);
+        return Accepted();
+    }
+    
+    [Authorize(Roles = "Medico")]
+    [HttpPost("disponibilidade")]
+    public async Task<IActionResult> CadastrarHorario([FromBody] HorariosDisponiveisRequest request)
+    {
+        var medicoId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(medicoId, out var mId))
+            return Unauthorized();
+
+        var command = new CadastrarHorarioDisponivelCommand
+        {
+            MedicoId = mId,
+            DataHora = request.DataHora
         };
 
         await _mediator.Send(command);

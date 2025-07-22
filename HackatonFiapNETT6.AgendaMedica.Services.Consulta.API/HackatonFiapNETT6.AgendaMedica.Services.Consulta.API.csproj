@@ -30,7 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Repositories\" />
+      <ProjectReference Include="..\HackatonFiapNETT6.AgendaMedica.Messaging\HackatonFiapNETT6.AgendaMedica.Messaging.csproj" />
     </ItemGroup>
 
 </Project>

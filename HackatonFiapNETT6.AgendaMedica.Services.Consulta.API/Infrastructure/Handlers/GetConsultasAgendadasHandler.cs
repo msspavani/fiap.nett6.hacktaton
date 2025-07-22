@@ -3,7 +3,7 @@ using Dapper;
 using HackatonFiapNETT6.AgendaMedica.Services.Consulta.API.Application.Dtos;
 using HackatonFiapNETT6.AgendaMedica.Services.Consulta.API.Application.Queries;
 
-namespace HackatonFiapNETT6.AgendaMedica.Services.Consulta.API.Repositories.Handlers;
+namespace HackatonFiapNETT6.AgendaMedica.Services.Consulta.API.Infrastructure.Handlers;
 
 public class GetConsultasAgendadasHandler
 {

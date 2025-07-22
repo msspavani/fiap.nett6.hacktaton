@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace HackatonFiapNETT6.AgendaMedica.Services.Auth.Infrastructure.Helpers;
+namespace HackatonFiapNETT6.AgendaMedica.Shared.Security;
 
 public static class CryptoCpfHelper
 {

@@ -10,21 +10,21 @@ namespace HackatonFiapNETT6.AgendaMedica.Services.Auth.Application.Commands.Aute
 
 public class AutenticarUsuarioCommandHandler : IRequestHandler<AutenticarUsuarioCommand, TokenResponse>
 {
-    private readonly IUsuarioRepository _usuarioRepository;
+    private readonly IUsuarioReadOnlyRepository _usuarioReadOnlyRepository;
     private readonly IMediator _mediator;
     private readonly JwtTokenGenerator _jwtTokenGenerator;
     
     
-    public AutenticarUsuarioCommandHandler(IUsuarioRepository usuarioRepository, IMediator mediator, JwtTokenGenerator jwtTokenGenerator)
+    public AutenticarUsuarioCommandHandler(IUsuarioReadOnlyRepository usuarioReadOnlyRepository, IMediator mediator, JwtTokenGenerator jwtTokenGenerator)
     {
-        _usuarioRepository = usuarioRepository;
+        _usuarioReadOnlyRepository = usuarioReadOnlyRepository;
         _mediator = mediator;
         _jwtTokenGenerator = jwtTokenGenerator;
     }
 
     public async Task<TokenResponse> Handle(AutenticarUsuarioCommand request, CancellationToken cancellationToken)
     {
-        var usuario = await _usuarioRepository.ObterPorLoginAsync(request.Login, request.Tipo);
+        var usuario = await _usuarioReadOnlyRepository.ObterPorLoginAsync(request.Login, request.Tipo);
         if (usuario == null || !usuario.ValidarSenha(request.Senha))
             throw new CredenciaisInvalidasException();
 

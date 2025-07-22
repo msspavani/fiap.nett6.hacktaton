@@ -1,5 +1,5 @@
 using HackatonFiapNETT6.AgendaMedica.Services.Auth.Application.Responses;
-using HackatonFiapNETT6.AgendaMedica.Services.Auth.Domain.Enums;
+using HackatonFiapNETT6.AgendaMedica.Shared.Enums;
 using MediatR;
 
 namespace HackatonFiapNETT6.AgendaMedica.Services.Auth.Application.Commands.AutenticarUsuario;

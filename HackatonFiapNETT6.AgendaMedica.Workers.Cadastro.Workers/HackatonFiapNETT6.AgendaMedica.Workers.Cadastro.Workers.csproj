@@ -8,6 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.20.1" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1"/>
+        <PackageReference Include="System.Memory.Data" Version="6.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HackatonFiapNETT6.AgendaMedica.Messaging\HackatonFiapNETT6.AgendaMedica.Messaging.csproj" />
+      <ProjectReference Include="..\HackatonFiapNETT6.AgendaMedica.Services.Auth.API\HackatonFiapNETT6.AgendaMedica.Services.Auth.API.csproj" />
     </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
 using System.Text;
-using HackatonFiapNETT6.AgendaMedica.Services.Auth.Domain.Enums;
+using HackatonFiapNETT6.AgendaMedica.Shared.Enums;
 using Konscious.Security.Cryptography;
 
 namespace HackatonFiapNETT6.AgendaMedica.Services.Auth.Domain.Entities;

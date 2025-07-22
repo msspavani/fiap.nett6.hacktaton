@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HackatonFiapNETT6.AgendaMedica.Shared\HackatonFiapNETT6.AgendaMedica.Shared.csproj" />
+    </ItemGroup>
+
 </Project>
